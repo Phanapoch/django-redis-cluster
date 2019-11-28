@@ -1,7 +1,7 @@
 #coding:utf8
 from redis._compat import urlparse
 
-from rediscluster import StrictRedisCluster
+from rediscluster import RedisCluster
 from rediscluster.connection import ClusterConnectionPool
 
 class ConnectionFactory(object):
@@ -17,7 +17,7 @@ class ConnectionFactory(object):
         
         params = self._make_connection_params()
         pool = self._get_connection_pool(params)
-        connection = StrictRedisCluster(connection_pool=pool)
+        connection = RedisCluster(connection_pool=pool)
         return connection
     
     
